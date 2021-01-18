@@ -1,0 +1,406 @@
+@import "color";
+$bg: $white;
+.mw200 {
+  max-width: 200px;
+}
+.m-b-20 {
+  margin-bottom: 20px !important;
+}
+.p-b-0 {
+  padding-bottom: 0 !important;
+}
+.modal-full {
+  max-width: 90%;
+}
+.modal-backdrop.show{
+  opacity: .8;
+}
+.bg-darkgreen {
+  background-color: #677475;
+}
+.sweet-overlay{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* navbar */
+nav.navbar {
+  .button-menu-mobile {
+    background: inherit;
+    height: auto;
+    width: auto;
+    font-size: 30px;
+  }
+  .dropdown-menu{
+    li{
+      button{
+        font-size: 14px;
+        padding: 6px 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// card
+.card {
+  .ds-card-title {
+    font-size: 18px !important;
+    line-height: 36px;
+
+    span{
+      font-size: 16px;
+      margin-left: 10px;
+    }
+  }
+  .ds-charts {
+    height: 300px;
+  }
+  .act-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    .dropdown-menu{
+      min-width: 100px;
+      text-align: center;
+    }
+  }
+  
+  .json-wrap {
+    height: 180px;
+  }
+}
+
+.blockMsg{
+  padding: 15px 35px !important;
+  border-radius:10px;
+  border:none !important;
+  width: auto !important;
+}
+
+.bootstrap-select {
+  .dropdown-menu{
+    background-color: $light3;
+  }
+  > .dropdown-toggle {
+    background-color: $light9;
+    border: 1px solid $lightgray;
+   
+    &:focus {
+      background-color: $light9;
+      border: 1px solid $lightdark7;
+      box-shadow: none;
+    }
+    &::after {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 0.255em;
+      vertical-align: 0.255em;
+      content: "";
+      border-top: 0.3em solid;
+      border-right: 0.3em solid transparent;
+      border-bottom: 0;
+      border-left: 0.3em solid transparent;
+      // color: #dee2e6;
+    }
+  }
+  .btn-light:not(:disabled):not(.disabled).active,
+  .btn-light:not(:disabled):not(.disabled):active,
+  > .btn-light.dropdown-toggle {
+    background-color: $light9;
+    border-color: $lightgray;
+  }
+  .bs-deselect-all,
+  .bs-select-all {
+    border: 1px solid #ccc;
+  }
+  .bs-searchbox {
+    .form-control {
+      background-color: $light;
+      border-color: $lightgray;
+      color: $lightdark4;
+      &:focus {
+        color: $lightdark4;
+      }
+    }
+  }
+  .bs-placeholder{
+    .filter-option-inner-inner{
+      color: $muted;
+    }
+    
+  }
+  .filter-option{
+    font-size: 14px;
+  }
+}
+
+.form-control{
+  background-color: $light9;
+  border-color: $lightgray;
+
+  &::placeholder{
+    color: $muted;
+  }
+}
+
+.form-control-plaintext {
+  color: $lightdark4;
+}
+
+.form-control:focus {
+  background-color: $light9;
+  border-color: $muted;
+}
+
+.custom-file-label{
+  background-color: $light9;
+  border-color: $lightgray;
+  &::after{
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+    content: "\f07c";
+    font-size: 16px;
+  }
+}
+
+.form-group{
+  .radio-group{
+    height: 38px;
+    padding: 10px 0;
+    .radio label::before{
+      background-color: #fff;
+    }
+  }
+}
+
+/* side-menu */
+#sidebar-menu {
+  > ul {
+    > li {
+      > a.active {
+        background-color: #318dbf !important;
+      }
+    }
+  }
+}
+
+#sidebar-menu ul ul li.active a {
+  color: #318dbf;
+}
+
+#wrapper.enlarged {
+  .left.side-menu {
+    #sidebar-menu {
+      > ul {
+        > li {
+          > a.active {
+            background-color: inherit !important;
+            border-right: 3px solid #318dbf;
+            i {
+              color: #318dbf;
+            }
+          }
+          > a span {
+            padding-left: 20px;
+          }
+          &:hover {
+            > a.active {
+              i {
+                color: #fff;
+              }
+            }
+            > ul {
+              a {
+                padding-left: 25px;
+                &:hover {
+                  color: #4ba8da;
+                }
+              }
+            }
+          }
+        }
+        > li.cus_item {
+          padding-top: 5px;
+          padding-bottom: 5px;
+          &:hover {
+            > a.active {
+              background-color: #318dbf !important;
+              border-right: 0;
+            }
+          }
+        }
+        ul {
+          box-shadow: none;
+          li.active {
+            a {
+              color: #318dbf;
+            }
+          }
+          a:hover {
+            color: #4ba8da;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-header-title{
+  .page-title {
+    color: $lightdark7;
+    a {
+      color: #98a4b9;
+    }
+  }
+}
+
+/* datatable */
+
+.table, table,
+.table-responsive {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+table, table.dataTable, table.table {
+  th,tr{
+    color: #666;
+  }
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+      }
+      .selected,
+      &.selected {
+        background-color: #3b4556;
+      }
+    }
+    .checkbox.checkbox-single label {
+      padding-left: 0;
+    }
+  }
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: $light;
+}
+
+.table-light{
+  background-color: rgba($color: #666, $alpha: 0.2);
+}
+.pagination > li > a, .pagination > li > span{
+  background-color: #fff !important;
+  border-color: $lightdark-alt !important;
+  color: #6c757d !important;
+}
+
+.form-line {
+  width: 100%;
+  height: 1px;
+  background-color: $lightdark5;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.sortable-ghost {
+  opacity: 0.5;
+}
+
+.anim {
+  transition: width 2s;
+}
+
+.page-content-wrapper {
+  min-height: 300px;
+}
+
+.bs-actionsbox{
+  .btn-group{
+    .actions-btn{
+      color: $dark;
+      background-color: $light;
+      &:hover{
+        color: $lightdark7;
+        background-color: $lightgray;
+      }
+      &:active{
+        background-color: $lightdark7 !important;
+        color: white;
+      }
+    }
+  }
+  
+}
+
+.checkbox label{
+  margin-left: 10px;
+  &::before{
+    background-color: #fff;
+  }
+}
+
+// chart css
+.ds-charts, .ds-charts-400{
+  width: 100%;
+  margin-top: 30px;
+}
+.ds-charts {
+  height: 850px;
+}
+.ds-charts-400 {
+  height: 400px;
+}
+
+.logo img, .logo-sm img{
+  height: 40px;
+}
+
+// top header
+.dropdown-menu.show{
+  border: 1px solid $lightdark-alt;
+  .notifi-title{
+    background-color: $danger;
+  }
+}
+
+@keyframes pulse-animation {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+  color: white !important;
+}
+
+.btn:focus, .btn.focus{
+  box-shadow:inherit;
+}
+
+hr {
+  border-color: $light;
+}
+
+.input-group-addon{
+  background-color:$light;
+  border-color: $lightdark-alt;
+  color: gray;
+}
+
+.datepicker > div{
+  display: block;
+}
+

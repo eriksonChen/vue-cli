@@ -1,0 +1,80 @@
+<div class="content">
+  <div class="page-header-title">
+    <h4 class="page-title">Form Commpont</h4>
+  </div>
+  <div class="page-content-wrapper container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title m-b-0">DEFAULT FORM</div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <sp-input label="First Name" v-model="user.firstName" required></sp-input>
+              </div>
+              <div class="col-sm-6">
+                <sp-input label="Last Name" v-model="user.lastName" required></sp-input>
+              </div>
+              <div class="col-sm-6">
+                <sp-input label="password" type="password" v-model="user.ps" required>
+                  <template v-slot:iconLeft>
+                    <i class="fas fa-lock"></i>
+                  </template>
+                </sp-input>
+              </div>
+              <div class="col-sm-6">
+                <sp-select label="City" v-model="user.city" :options='citySelect' placeholder="居住城市"></sp-select>
+              </div>
+              <div class="col-sm-6">
+                <sp-datepicker label='開始日期' placeholder="Start time" v-model="user.start">
+                  <template v-slot:iconLeft> <i class="fas fa-calendar"></i> </template>
+                </sp-datepicker>
+              </div>
+              <div class="col-sm-6">
+                <sp-datepicker label='結束日期' placeholder="End time" v-model="user.end">
+                  <template v-slot:iconLeft> <i class="fas fa-calendar"></i> </template>
+                </sp-datepicker>
+              </div>
+              <div class="col-sm-12 form-group">
+                <p>switch</p>
+                <div class="d-flex form-group">
+                  <sp-switch v-model="user.switch1" id="sw1"></sp-switch>
+                  <sp-switch v-model="user.switch2" id="sw2"></sp-switch>
+                  <sp-switch v-model="user.switch3" id="sw3"></sp-switch>
+                  <sp-switch v-model="user.switch4" id="sw4"></sp-switch>
+                </div>
+              </div>
+              <!-- Checkbox -->
+              <div class="col-sm-12 form-group">
+                <label class="control-label">Checkbox</label>
+                <div class="d-flex justify-content-between">
+                  <sp-checkbox class="checkbox-primary" label="星期一" id="cb01"></sp-checkbox>
+                  <sp-checkbox class="checkbox-primary" label="星期二" id="cb02"></sp-checkbox>
+                  <sp-checkbox class="checkbox-primary" label="星期三" id="cb03"></sp-checkbox>
+                  <sp-checkbox class="checkbox-primary" label="星期四" id="cb04"></sp-checkbox>
+                  <sp-checkbox class="checkbox-primary" label="星期五" id="cb05"></sp-checkbox>
+                  <sp-checkbox class="checkbox-primary" label="星期六" id="cb06"></sp-checkbox>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title m-b-0">HORIZONTAL FORM</div>
+          </div>
+          <div class="card-body">
+            erikson
+          </div>
+          <div class="card-footer text-right">
+            <button class="btn btn-info">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

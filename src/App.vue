@@ -1,12 +1,41 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div id="wrapper" class="forced" :class="{ enlarged: !menuOpen }">
+    <TopBar></TopBar>
+    <SideMenu></SideMenu>
+    <div class="content-page">
+      <router-view />
     </div>
-    <router-view/>
   </div>
 </template>
+
+<script>
+import SideMenu from "@/components/SideMenu.vue"
+import TopBar from "@/components/TopBar.vue"
+import { mapActions, mapState } from "vuex"
+
+export default {
+  components: {
+    SideMenu,
+    TopBar,
+  },
+  data() {
+    return {
+      islogin: false,
+    };
+  },
+  computed: {
+    ...mapState(["menuOpen"]),
+  },
+  mounted() {
+  },
+  methods: {
+   
+  },
+  destroyed() {
+    
+  },
+};
+</script>
 
 <style lang="scss">
 #app {

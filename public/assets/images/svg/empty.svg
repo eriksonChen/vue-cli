@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="82px" height="53px" viewBox="0 0 82 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>empty</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-104.000000, -108.000000)" fill="#FFFFFF">
+            <g id="空床" transform="translate(86.000000, 53.000000)">
+                <path d="M21.5,55 C23.4329966,55 25,56.5670034 25,58.5 L25,83 L100,83 L100,104.5 C100,106.432997 98.4329966,108 96.5,108 C94.5670034,108 93,106.432997 93,104.5 L93,99 L25,99 L25,104.5 C25,106.432997 23.4329966,108 21.5,108 C19.5670034,108 18,106.432997 18,104.5 L18,58.5 C18,56.5670034 19.5670034,55 21.5,55 Z" id="empty"></path>
+            </g>
+        </g>
+    </g>
+</svg>
