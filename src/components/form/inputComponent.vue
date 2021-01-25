@@ -1,11 +1,12 @@
 <template>
-  <div class="form-group" v-bind:class="{'d-flex': horizontal}">
+  <div class="form-group" v-bind:class="{'d-flex align-items-center': horizontal}">
     <label v-if="label" v-bind:class="labelClass">{{label}}</label>
     <div v-if="stat" 
       class="form-control-static font-weight-bold"
-      v-bind:class="inputClass" v-html="value">
+      v-bind:class="inputClass" 
+      v-html="value">
     </div>
-    <div v-bind:class="inputClass" v-if="!stat">
+    <div v-if="!stat" v-bind:class="inputClass">
       <div class="input-group">
         <span v-if="$slots.iconLeft" class="input-group-addon">
           <slot name="iconLeft"></slot>
@@ -54,12 +55,17 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
-@import '../../assets/scss/_color.scss';
+<style lang="scss" scoped>
   label{
     color: $muted;
   }
   .label-width{
     width: 85px;
+    margin-bottom: 0;
+  }
+  .col{
+    padding-left: 0;
+    padding-right: 0;
+    flex: 1;
   }
 </style>

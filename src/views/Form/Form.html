@@ -37,6 +37,16 @@
                   <template v-slot:iconLeft> <i class="fas fa-calendar"></i> </template>
                 </sp-datepicker>
               </div>
+              <div class="col-sm-6">
+                <sp-timepicker label="開始時間" placeholder="Start time" v-model="user.start_time">
+                  <template v-slot:iconLeft> <i class="fas fa-clock"></i> </template>
+                </sp-timepicker>
+              </div>
+              <div class="col-sm-6">
+                <sp-timepicker label="結束時間" placeholder="End time" v-model="user.end_time">
+                  <template v-slot:iconLeft> <i class="fas fa-clock"></i> </template>
+                </sp-timepicker>
+              </div>
               <div class="col-sm-12 form-group">
                 <p>switch</p>
                 <div class="d-flex form-group">
@@ -63,17 +73,70 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title m-b-0">HORIZONTAL FORM</div>
+        <form @submit.prevent="sendBtn">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title m-b-0">HORIZONTAL FORM</div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <sp-input label="First Name" v-model="user.firstName" horizontal required></sp-input>
+                </div>
+                <div class="col-sm-12">
+                  <sp-input label="Last" v-model="user.lastName" horizontal required></sp-input>
+                </div>
+                <div class="col-sm-6">
+                  <sp-input label="password" type="password" v-model="user.ps" horizontal required></sp-input>
+                </div>
+                <div class="col-sm-6">
+                  <sp-select label="City" v-model="user.city" :options='citySelect' horizontal placeholder="居住城市"></sp-select>
+                </div>
+                <div class="col-sm-6">
+                  <sp-datepicker label='開始日期' placeholder="Start time" horizontal v-model="user.start">
+                  </sp-datepicker>
+                </div>
+                <div class="col-sm-6">
+                  <sp-datepicker label='結束日期' placeholder="End time" horizontal v-model="user.end">
+                  </sp-datepicker>
+                </div>
+                <div class="col-sm-12">
+                  <sp-timepicker label="開始時間" placeholder="Start time" horizontal v-model="user.start_time">
+                  </sp-timepicker>
+                </div>
+                <div class="col-sm-12">
+                  <sp-timepicker label="結束時間" placeholder="End time" horizontal v-model="user.end_time">
+                  </sp-timepicker>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    
+                    <label for="">Data range</label>
+                    <date-range-picker
+                      ref="picker"
+                      :locale-data="{ firstDay: 1, format: 'DD-MM-YYYY HH:mm:ss' }"
+                      v-model="dateRange"
+                      auto-apply
+                      @update="updateValues"
+                      @toggle="checkOpen"
+                      control-container-class="form-control"
+                      class="daterange-picker"
+                    >
+                      <template v-slot:input="picker" class="re-text">
+                        {{ picker.startDate | date }} - {{ picker.endDate | date }}
+                      </template>
+                    </date-range-picker>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-right">
+              <button class="btn btn-info">Save</button>
+            </div>
           </div>
-          <div class="card-body">
-            erikson
-          </div>
-          <div class="card-footer text-right">
-            <button class="btn btn-info">Save</button>
-          </div>
-        </div>
+        </form>
+        
       </div>
     </div>
   </div>

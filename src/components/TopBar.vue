@@ -62,7 +62,6 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import store from '../store'
-// import $ from 'jquery'
 
 export default {
   name: "TopBar",
@@ -88,7 +87,6 @@ export default {
         $(".left ul").removeAttr("style");
       }
 
-      // this.toggle_slimscroll(".slimscrollleft");
       $("body").trigger("resize");
     },
     toggle_slimscroll: function (item) {

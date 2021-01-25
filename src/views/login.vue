@@ -105,7 +105,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import "../assets/scss/custom";
 #login {
   width: 100vw;
   height: 100vh;
@@ -113,6 +112,6 @@ export default {
   top: 0;
   left: 0;
   z-index: 1000;
-  background-color: $bg;
+  background-color: $dark;
 }
 </style>

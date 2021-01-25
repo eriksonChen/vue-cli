@@ -14,7 +14,6 @@
 
 <script>
 import { Subject } from 'rxjs';
-// import $ from 'jquery'
 
 export default {
   inheritAttrs: false,
@@ -62,8 +61,6 @@ export default {
   mounted:function(){
     this.cbox = document.querySelector('#sw'+this.id);
     this.sw = new Switchery(this.cbox, this.switchStyle);
-    
-    // $(this.$el).find('small').html('<i class="fas fa-spinner"></i>');
   },
   methods: {
     toggleSwitch:function(e){
@@ -74,15 +71,11 @@ export default {
   beforeDestroy: function() {
     this.subject.next();
     this.subject.complete();
-    // this.sw.destroy();
+    this.sw.destroy();
   }
 }
- 
 </script>
 
-<style lang="scss" scope>
-  // .switchery{
-  //   margin-left: 10px;
-  // }
+<style scoped lang="css">
+  @import "../../assets/plugins/switchery/switchery.css";
 </style>
-

@@ -1,7 +1,8 @@
 <template>
-  <div class="form-group">
-    <label v-if="label">{{label}}</label>
-    <select class="form-control selectpicker"
+  <div class="form-group" v-bind:class="{'d-flex align-items-center': horizontal}">
+    <label v-if="label" v-bind:class="labelClass">{{label}}</label>
+    <select class="form-control selectpicker" 
+      v-bind:class="inputClass"
       v-bind:title="$attrs.placeholder"
       v-bind="$attrs"
       v-model="val" 
@@ -16,7 +17,8 @@
 </template>
 
 <script>
-import $ from 'jquery'
+import '@/assets/js/vendor/bootstrap-select.min.js'
+
 export default {
   inheritAttrs: false,
   name: 'SelectComponent',
@@ -24,10 +26,19 @@ export default {
     label:String,
     options:Array,
     value:String,
+    horizontal:Boolean
   },
   data(){
     return {
       val: ""
+    }
+  },
+  computed: {
+    labelClass:function(){
+      return this.horizontal ? 'label-width control-label' : '';
+    },
+    inputClass:function(){
+      return this.horizontal ? 'col' : '';
     }
   },
   watch: {
@@ -56,5 +67,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  
+  @import "../../assets/plugins/bootstrap-select/bootstrap-select.min.css";
+  label{
+    color: $muted;
+  }
+  .label-width{
+    width: 85px;
+    margin-bottom: 0;
+  }
 </style>

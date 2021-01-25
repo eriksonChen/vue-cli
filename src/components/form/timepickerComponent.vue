@@ -5,7 +5,7 @@
       <span v-if="$slots.iconLeft" class="input-group-addon">
         <slot name="iconLeft"></slot>
       </span>
-      <input class="form-control date-picker"
+      <input class="form-control timepicker"
         v-bind="$attrs"
         v-on:input="$emit('input', $event.target.value)"
         v-bind:value="value"
@@ -18,22 +18,24 @@
 </template>
 
 <script>
-// import dayjs from 'dayjs'
-import "@/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
-
+import "@/assets/plugins/timepicker/bootstrap-timepicker.js"
 export default {
   inheritAttrs: false,
-  name: 'DatepickerComponent',
+  name: 'TimepickerComponent',
   props: {
     label:String,
     iconRight:Boolean,
     iconLeft:Boolean,
     value:String,
+    option:Object,
     horizontal:Boolean
   },
   data(){
     return {
-      
+      opt:{
+        showMeridian: false,
+        minuteStep:5
+      },
     }
   },
   computed: {
@@ -45,20 +47,18 @@ export default {
     }
   },
   mounted() {
-    const picker = $(this.$el).find('.date-picker');
-    picker.datepicker({
-      format: 'yyyy/mm/dd',
-      autoclose:true,
-      // todayHighlight:true,
-    }).on('changeDate', e => {
-      this.$emit('input', e.target.value);
+    this.value = this.value==="" ? '0:00' :this.value;
+    const obj = {...this.opt, ...this.option};
+    const picker = $(this.$el).find('.timepicker');
+    picker.timepicker(obj).on('changeTime.timepicker', e => {
+      this.$emit('input', e.time.value);
     });
   },
 }
 </script>
 
-<style scoped lang="scss">
-  @import "../../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css";
+<style lang="scss" scoped>
+  @import "../../assets/plugins/timepicker/bootstrap-timepicker.min.css";
   label{
     color: $muted;
   }
