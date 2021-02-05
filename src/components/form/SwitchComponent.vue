@@ -76,6 +76,36 @@ export default {
 }
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
   @import "../../assets/plugins/switchery/switchery.css";
+  ::v-deep {
+    .switchery>small {
+      display: flex;
+    }
+    .switchery>small>i{
+      display: none;
+      margin: auto;
+      color:gray;
+      animation: pending 1s infinite linear;
+    }
+    .pending .switchery>small>i{
+      display: block;
+    }
+    @-webkit-keyframes pending {
+      from {
+        -webkit-transform: rotate(0deg);
+      }
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    @keyframes pending {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
 </style>

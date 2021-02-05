@@ -1,11 +1,11 @@
 const webpack = require('webpack');
 
 module.exports = {
-  publicPath: './',
+  publicPath: '/',
   lintOnSave: true,
   devServer: {
     proxy: null,
-    port: 4200,
+    port: 8081,
     hotOnly:false,
   },
   css: {
@@ -24,6 +24,14 @@ module.exports = {
         jQuery: 'jquery',        
         'windows.jQuery': 'jquery'  
       })    
-    ]  
+    ]
+  },
+  chainWebpack: config => {
+    config
+    .plugin('html')
+    .tap(args => {
+      args[0].title = '管理平台'
+      return args
+    })
   }
 }

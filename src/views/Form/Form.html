@@ -47,6 +47,16 @@
                   <template v-slot:iconLeft> <i class="fas fa-clock"></i> </template>
                 </sp-timepicker>
               </div>
+
+              <!-- range slider -->
+              <div class="col-sm-6">
+                <sp-rangeslider label="RangeSlider(single)" prefix="$" v-model="user.rangeSingle"></sp-rangeslider>
+              </div>
+              <div class="col-sm-6">
+                <sp-rangeslider label="RangeSlider(double)" postfix="分" double v-model="user.rangeDouble"></sp-rangeslider>
+              </div>
+
+              <!-- switch -->
               <div class="col-sm-12 form-group">
                 <p>switch</p>
                 <div class="d-flex form-group">
@@ -68,6 +78,12 @@
                   <sp-checkbox class="checkbox-primary" label="星期六" id="cb06"></sp-checkbox>
                 </div>
               </div>
+
+              <!-- textarea -->
+              <div class="col-sm-12">
+                <sp-textarea label="Textarea" v-model="user.text" rows="4" placeholder="請輸入文字"></sp-textarea>
+              </div>
+              
             </div>
           </div>
         </div>
@@ -86,31 +102,36 @@
                 <div class="col-sm-12">
                   <sp-input label="Last" v-model="user.lastName" horizontal required></sp-input>
                 </div>
-                <div class="col-sm-6">
-                  <sp-input label="password" type="password" v-model="user.ps" horizontal required></sp-input>
+                <div class="col-sm-12">
+                  <sp-input label="password" type="password" v-model="user.ps" horizontal required>
+                    <template v-slot:iconLeft><i class="fas fa-lock"></i></template>
+                  </sp-input>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                   <sp-select label="City" v-model="user.city" :options='citySelect' horizontal placeholder="居住城市"></sp-select>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                   <sp-datepicker label='開始日期' placeholder="Start time" horizontal v-model="user.start">
+                    <template v-slot:iconRight> <i class="fas fa-calendar"></i> </template>
                   </sp-datepicker>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                   <sp-datepicker label='結束日期' placeholder="End time" horizontal v-model="user.end">
+                    <template v-slot:iconRight> <i class="fas fa-calendar"></i> </template>
                   </sp-datepicker>
                 </div>
                 <div class="col-sm-12">
                   <sp-timepicker label="開始時間" placeholder="Start time" horizontal v-model="user.start_time">
+                    <template v-slot:iconLeft> <i class="fas fa-clock"></i> </template>
                   </sp-timepicker>
                 </div>
                 <div class="col-sm-12">
                   <sp-timepicker label="結束時間" placeholder="End time" horizontal v-model="user.end_time">
+                    <template v-slot:iconLeft> <i class="fas fa-clock"></i> </template>
                   </sp-timepicker>
                 </div>
-                <div class="col-sm-12">
+                <!-- <div class="col-sm-12">
                   <div class="form-group">
-                    
                     <label for="">Data range</label>
                     <date-range-picker
                       ref="picker"
@@ -127,8 +148,18 @@
                       </template>
                     </date-range-picker>
                   </div>
-                  
+                </div> -->
+                <div class="col-sm-12">
+                  <sp-rangeslider label="RangeSlider(single)" prefix="$" v-model="user.rangeSingle" horizontal></sp-rangeslider>
                 </div>
+                <div class="col-sm-12">
+                  <sp-rangeslider label="RangeSlider(double)" postfix="分" double v-model="user.rangeDouble" horizontal></sp-rangeslider>
+                </div>
+
+                <div class="col-sm-12">
+                  <sp-textarea label="textarea" v-model="user.text" horizontal></sp-textarea>
+                </div>
+                
               </div>
             </div>
             <div class="card-footer text-right">

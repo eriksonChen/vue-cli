@@ -1,0 +1,25 @@
+<div class="content">
+  <div class="page-header-title">
+    <div class="page-title">Map page</div>
+  </div>
+  <div class="page-content-wrapper container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <sp-select label="請選擇區域" :options="areaArray" v-model="tarArea"></sp-select>
+              </div>
+              <div class="col-sm-12">
+                <div id="map"></div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -10,7 +10,7 @@
             </router-link>
           </li>
           <li class="cus_item">
-            <router-link to="/form" exact class="waves-effect">
+            <router-link :to="{name:'Form'}" exact class="waves-effect">
               <i class="fas fa-align-justify"></i> <span> Form </span>
             </router-link>
           </li>
@@ -19,26 +19,15 @@
               <i class="fas fa-table"></i> <span> Table </span>
             </router-link>
           </li>
-          <li class="has_sub cus_item">
-            <a href="javascript:;" 
-            :class="{ active: isActive('about') }"
-            class="waves-effect"  
-            @click.stop="menuItemClick($event)">
-              <i class="mdi mdi-diamond"></i>
-              <span> 帳戶管理 </span>
-              <span class="float-right"><i class="mdi mdi-plus"></i></span>
-            </a>
-            <ul class="list-unstyled">
-              <router-link tag="li" to="/about/page1" exact class="cus_item">
-                <a href="javascript:;">Page 1</a>
-              </router-link>
-              <router-link tag="li" to="/about/page2" exact class="cus_item">
-                <a href="javascript:;">Page 2</a>
-              </router-link>
-              <router-link tag="li" to="/about/page3" exact class="cus_item">
-                <a href="javascript:;">Page 3</a>
-              </router-link>
-            </ul>
+          <li class="cus_item">
+            <router-link :to="{name:'gmap'}" exact class="waves-effect">
+              <i class="fas fa-map"></i> <span> Map </span>
+            </router-link>
+          </li>
+          <li class="cus_item">
+            <router-link :to="{name:'Card'}" exact class="waves-effect">
+              <i class="fas fa-id-card"></i> <span> Card </span>
+            </router-link>
           </li>
           <li class="has_sub cus_item">
             <a href="javascript:;" 
@@ -50,13 +39,13 @@
               <span class="float-right"><i class="mdi mdi-plus"></i></span>
             </a>
             <ul class="list-unstyled">
-              <router-link tag="li" to="/information/page1" exact class="cus_item">
+              <router-link tag="li" :to="{name: 'info-page1'}" exact class="cus_item">
                 <a href="javascript:;">Page 1</a>
               </router-link>
-              <router-link tag="li" to="/information/page2" exact class="cus_item">
+              <router-link tag="li" :to="{name: 'info-page2'}" exact class="cus_item">
                 <a href="javascript:;">Page 2</a>
               </router-link>
-              <router-link tag="li" to="/information/page3" exact class="cus_item">
+              <router-link tag="li" :to="{name: 'info-page3'}" exact class="cus_item">
                 <a href="javascript:;">Page 3</a>
               </router-link>
             </ul>

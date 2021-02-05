@@ -11,7 +11,10 @@ export default {
 
   },
   mounted () {
-    
+    // var tol = $(this.$refs['tooltip-box']);
+    $('.card-body [data-toggle="tooltip"]').tooltip({
+      trigger : 'hover'
+    })
   },
   methods: {
 

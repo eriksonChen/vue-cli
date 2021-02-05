@@ -401,12 +401,6 @@ span.badge{
   border-top: 1px solid #4a5869;
 }
 
-
-//datepicker
-.datepicker>div{
-  display: block;
-}
-
 .content-page>.content{
   padding-left: 0;
   padding-right: 0;
@@ -432,36 +426,6 @@ span.badge{
     .card-body{
       padding: 0;
     }
-  }
-}
-
-// switch
-.switchery>small {
-  display: flex;
-}
-.switchery>small>i{
-  display: none;
-  margin: auto;
-  color:gray;
-  animation: pending 1s infinite linear;
-}
-.pending .switchery>small>i{
-  display: block;
-}
-@-webkit-keyframes pending {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@keyframes pending {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
 

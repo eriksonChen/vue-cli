@@ -43,6 +43,11 @@ nav.navbar {
 
 // card
 .card {
+  &.bg-dark, &.bg-warning, &.bg-info, &.bg-danger, &.bg-primary, &.bg-success, .bg-dark, .bg-warning, .bg-info, .bg-danger, .bg-primary, .bg-success{
+    .card-title{
+      color: white;
+    }
+  }
   .ds-card-title {
     font-size: 18px !important;
     line-height: 36px;

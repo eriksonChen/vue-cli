@@ -4,7 +4,8 @@ import DatepickerComponent from "@/components/form/datepickerComponent.vue"
 import SwitchComponent from "@/components/form/SwitchComponent.vue"
 import CheckboxComponent from "@/components/form/checkboxComponent.vue"
 import TimepickerComponent from "@/components/form/timepickerComponent.vue"
-import dayjs from 'dayjs'
+import TextareaComponent from "@/components/form/textareaComponent.vue"
+import RangesliderComponent from "@/components/form/rangesliderComponent.vue"
 import DateRangePicker from 'vue2-daterange-picker'
 import { Subject, interval } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
@@ -18,7 +19,9 @@ export default {
     'sp-switch': SwitchComponent,
     'sp-checkbox': CheckboxComponent,
     'sp-timepicker': TimepickerComponent,
+    'sp-textarea': TextareaComponent,
     'date-range-picker':DateRangePicker,
+    'sp-rangeslider':RangesliderComponent,
   },
   props: [],
   data () {
@@ -28,6 +31,7 @@ export default {
     return {
       dateRange: {startDate, endDate},
       subject: new Subject(),
+      url:'./assets/apis/data.json',
       user:{
         firstName:'Chen',
         lastName:'Erikson',
@@ -41,7 +45,10 @@ export default {
         end:'',
         start_time:'10:20',
         end_time:'11:30',
-        dateRange:''
+        dateRange:'',
+        text:'Hello erikson chen',
+        rangeSingle:'38',
+        rangeDouble: '25,67',
       },
       citySelect:[ '台北', '台南', '台中' ]
     }
@@ -55,21 +62,20 @@ export default {
 
   },
   watch: {
+    'user.rangeDouble':function(val){
+      console.log(val)
+    },
     'user.switch2':function (val) {
       console.log('user switch2', val);
     },
     'user.start_time':function(val){
       console.log('start time', val)
-    }
+    },
   },
   mounted () {
-    // const times = interval(2000)
-    // times.pipe(
-    //   takeUntil(this.subject)
-    // ).subscribe(res =>{
-    //   console.log(res);
-    // })
-    console.log(this.$refs.picker);
+    this.axios.get(this.url).then((response) => {
+      console.log(response.data)
+    })
   },
   methods: {
     dateFormat (classes, date) {
