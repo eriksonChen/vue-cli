@@ -42,14 +42,15 @@ export default {
   },
   methods: {
     setMap: function(latlng, zoom){
+      console.log('test', latlng)
       this.map = new google.maps.Map(document.getElementById("map"), {
+        mapId:"95d620f8ce4653c7",
         zoom: zoom,
         center: { lat: latlng[0], lng: latlng[1] },
         zoomControl: true,
         fullscreenControl: false,
         streetViewControl: false,
         mapTypeControl: false,
-        // mapId:"f438227f48db4449",
       })
     },
     setMarker: function (latlng) {
