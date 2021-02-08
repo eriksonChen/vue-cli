@@ -6,7 +6,6 @@
       <input type="text" class="js-range-slider"
         ref="slider"
         v-bind="$attrs"
-        v-on:input="$emit('input', $event.target.value)"
         v-bind:value="value"/>
     </div>
   </div>
@@ -41,8 +40,7 @@
     },
     mounted() {
 
-      this.rangeslider = $(this.$refs.slider);
-      this.rangeslider.ionRangeSlider({
+      $(this.$refs.slider).ionRangeSlider({
         skin: "round",
         type: this.double || "single",
         min: this.min || 0,
@@ -52,9 +50,10 @@
         postfix:this.postfix,
         input_values_separator:',',
         onChange: ()=> {
-          this.$emit('input', this.rangeslider.val());
+          this.$emit('input', $(this.$refs.slider).val());
         }
-      })
+      });
+      this.rangeslider = $(this.$refs.slider).data('ionRangeSlider');
 
     },
     methods: {
