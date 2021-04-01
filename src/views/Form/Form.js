@@ -1,28 +1,9 @@
-import InputComponent from "@/components/form/inputComponent.vue"
-import SelectComponent from "@/components/form/SelectComponent.vue"
-import DatepickerComponent from "@/components/form/datepickerComponent.vue"
-import SwitchComponent from "@/components/form/SwitchComponent.vue"
-import CheckboxComponent from "@/components/form/checkboxComponent.vue"
-import TimepickerComponent from "@/components/form/timepickerComponent.vue"
-import TextareaComponent from "@/components/form/textareaComponent.vue"
-import RangesliderComponent from "@/components/form/rangesliderComponent.vue"
-import DateRangePicker from 'vue2-daterange-picker'
 import { Subject, interval } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
 
 export default {
   name: 'Form',
-  components: {
-    'sp-input':InputComponent,
-    'sp-select':SelectComponent,
-    'sp-datepicker': DatepickerComponent,
-    'sp-switch': SwitchComponent,
-    'sp-checkbox': CheckboxComponent,
-    'sp-timepicker': TimepickerComponent,
-    'sp-textarea': TextareaComponent,
-    'date-range-picker':DateRangePicker,
-    'sp-rangeslider':RangesliderComponent,
-  },
+  components: {},
   props: [],
   data () {
     let startDate = new Date();
