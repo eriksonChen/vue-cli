@@ -5,7 +5,7 @@
       <span v-if="$slots.iconLeft" class="input-group-addon">
         <slot name="iconLeft"></slot>
       </span>
-      <input class="form-control date-picker"
+      <input ref="datepicker" class="form-control"
         v-bind="$attrs"
         v-on:input="$emit('input', $event.target.value)"
         v-bind:value="value"
@@ -18,8 +18,6 @@
 </template>
 
 <script>
-// import dayjs from 'dayjs'
-import "@/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
 
 export default {
   inheritAttrs: false,
@@ -45,11 +43,12 @@ export default {
     }
   },
   mounted() {
-    const picker = $(this.$el).find('.date-picker');
+    const picker = $(this.$refs.datepicker)
     picker.datepicker({
       format: 'yyyy/mm/dd',
       autoclose:true,
-      // todayHighlight:true,
+      todayHighlight:true,
+      weekStart:1,
     }).on('changeDate', e => {
       this.$emit('input', e.target.value);
     });
@@ -58,7 +57,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "../../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css";
   label{
     color: $muted;
   }
