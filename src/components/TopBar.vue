@@ -49,7 +49,9 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <button type="button" class="dropdown-item">Logout</button>
+                <button type="button" class="dropdown-item" @click="logout">
+                  Logout
+                </button>
               </li>
             </ul>
           </li>
@@ -61,7 +63,7 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
-import store from '../store'
+import store from "../store";
 
 export default {
   name: "TopBar",
@@ -71,13 +73,17 @@ export default {
   data() {
     return {
       isEnLarged: true,
-    }
+    };
   },
   computed: {
     ...mapState(["menuOpen"]),
   },
   mounted() {},
   methods: {
+    // logout: function () {
+    //   this.$router.push({ name: "login" });
+    // },
+    ...mapActions(["logout"]),
     toggleMenu: function () {
       store.dispatch("toggleMenu");
 

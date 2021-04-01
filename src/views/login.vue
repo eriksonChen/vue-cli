@@ -3,68 +3,77 @@
     <div class="wrapper-page">
       <div class="card">
         <div class="card-body">
-          <h3 class="text-center m-t-0 m-b-15">
-            <div class="logo mb-5">
+          <h3 class="text-center">
+            <div class="logo">
               <img src="/assets/images/logo-text.png" alt="logo-img" />
-              <h3>帳號登入</h3>
+              <h3 class="text-muted">帳號登入</h3>
             </div>
           </h3>
-          <!-- <h4 class="text-muted text-center m-t-0"><b>帳號登入</b></h4> -->
+
 
           <form
-            class="m-t-20"
+            class="mt-5 row"
             v-on:submit.prevent="sendBtn($event)"
             method="post"
           >
             <div class="col-12">
-              <sp-input
-                type="text"
-                required
-                v-model="id"
-                placeholder="請輸入帳號"
-              >
-                <template v-slot:iconRight
-                  ><i class="fas fa-user"></i
-                ></template>
-              </sp-input>
+              <p class="text-muted" v-if="isDev">測試帳密：erikson / admin</p>
             </div>
-
             <div class="col-12">
-              <sp-input
-                type="password"
-                required
-                v-model="password"
-                placeholder="Password"
-              >
-                <template v-slot:iconRight
-                  ><i class="fas fa-lock"></i
-                ></template>
-              </sp-input>
-            </div>
-
-            <!-- <div class="col-12">
-              <sp-checkbox id="checkbox-signup" class="checkbox-primary" label="Remember me" v-model="rememberMe"></sp-checkbox>
-            </div> -->
-
-            <div class="form-group text-center m-t-40">
-              <div class="col-12">
-                <button
-                  class="btn btn-primary btn-block btn-lg waves-effect waves-light"
-                  type="submit"
-                >
-                  Log In
-                </button>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  :class="{ 'is-invalid': errorId }"
+                  type="text"
+                  required
+                  v-model="id"
+                  placeholder="請輸入帳號"
+                  aria-describedby="validationUserId"
+                />
+                <div id="validationUserId" class="invalid-feedback">
+                  無此帳號
+                </div>
               </div>
             </div>
 
-            <div class="form-group row m-t-30 m-b-0">
-              <div class="col-sm-12 text-center">
+            <div class="col-12">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  :class="{ 'is-invalid': errorPassword }"
+                  type="password"
+                  required
+                  v-model="password"
+                  aria-describedby="validationUserPassword"
+                />
+                <div id="validationUserPassword" class="invalid-feedback">
+                  密碼錯誤
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <sp-checkbox id="checkbox-signup" class="checkbox-primary" label="Remember me" v-model="rememberMe"></sp-checkbox>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group text-center mt-4">
+                <button
+                  class="btn btn-primary btn-block btn-lg waves-effect waves-light"
+                  type="submit"
+                > Log In </button>
+              </div>
+            </div>
+
+            <div class="col-12 text-center">
+              <div class="form-group">
                 <a href="javascript:;" class="text-muted">
-                  <i class="fa fa-lock m-r-5"></i> 忘記密碼?
+                  <i class="fa fa-lock mr-2"></i> 忘記密碼?
                 </a>
               </div>
             </div>
           </form>
+
         </div>
       </div>
     </div>
@@ -72,21 +81,24 @@
 </template>
 
 <script>
-import InputComponent from "@/components/form/inputComponent.vue";
-// import SelectComponent from "../components/form/SelectComponent";
+import dayjs from "dayjs";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "Login",
-  components: {
-    // "select-component": SelectComponent,
-    "sp-input": InputComponent,
-  },
+  components: {},
   data() {
     return {
+      isDev: "",
       id: "",
       password: "",
-      deviceId: "",
-      deviceSelect: [],
+      errorPassword: false,
+      errorId: false,
+      rememberMe:false,
+      user: {
+        id: "erikson",
+        password: "admin",
+      },
     };
   },
   computed: {
@@ -94,10 +106,24 @@ export default {
   },
   watch: {},
   mounted() {
+    $cookies.remove("user_token");
+    this.isDev = process.env.NODE_ENV === "development" ? true : false;
   },
   methods: {
+    ...mapActions(["setToken"]),
     sendBtn: function (e) {
-      this.$router.push('/');
+      this.errorId = this.user.id !== this.id;
+
+      if (this.errorId) {
+        return;
+      } else {
+        this.errorPassword = this.user.password !== this.password;
+        if (this.errorPassword) return;
+      }
+      const token = dayjs().unix();
+      this.setToken(token);
+
+      this.$router.push("/");
     },
   },
 };
