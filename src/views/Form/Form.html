@@ -108,6 +108,22 @@
                   </sp-input>
                 </div>
                 <div class="col-sm-12">
+                  <sp-input label="withButton" v-model="user.del" horizontal required>
+                    <template v-slot:iconBtn>
+                      <button 
+                        type="button" 
+                        class="btn btn-danger"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="清除"
+                        @click="delBtn"
+                      >
+                        <i class="mdi mdi-close"></i>
+                      </button>
+                    </template>
+                  </sp-input>
+                </div>
+                <div class="col-sm-12">
                   <sp-select label="City" v-model="user.city" :options='citySelect' horizontal placeholder="居住城市"></sp-select>
                 </div>
                 <div class="col-sm-12">

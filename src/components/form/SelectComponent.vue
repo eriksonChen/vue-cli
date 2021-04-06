@@ -1,7 +1,7 @@
 <template>
   <div class="form-group" v-bind:class="{'d-flex align-items-center': horizontal}">
     <label v-if="label" v-bind:class="labelClass">{{label}}</label>
-    <select class="form-control selectpicker" 
+    <select ref="selectpicker" class="form-control selectpicker" 
       v-bind:class="inputClass"
       v-bind:title="$attrs.placeholder"
       v-bind="$attrs"
@@ -54,13 +54,11 @@ export default {
     }
   },
   updated: function() {
-    $(this.$el).find('select.selectpicker').selectpicker('refresh');
+    $(this.$refs.selectpicker).selectpicker('refresh');
   },
   mounted(){
-    const el = $(this.$el).find('select.selectpicker');
-    el.selectpicker();
+    $(this.$refs.selectpicker).selectpicker();
     this.val = this.value;
-        
   },
 }
 </script>

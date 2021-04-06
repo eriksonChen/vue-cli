@@ -19,6 +19,9 @@
         <span v-if="$slots.iconRight" class="input-group-addon">
           <slot name="iconRight"></slot>
         </span>
+        <span v-if="$slots.iconBtn" class="input-group-btn">
+          <slot name="iconBtn"></slot>
+        </span>
       </div>
       <span v-if="note" class="help-block"> {{note}} </span>
     </div>
@@ -32,8 +35,6 @@ export default {
   props: {
     title:String,
     label:String,
-    iconRight:Boolean,
-    iconLeft:Boolean,
     value:String,
     static:Boolean,
     note:String,

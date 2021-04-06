@@ -5,7 +5,7 @@
       <span v-if="$slots.iconLeft" class="input-group-addon">
         <slot name="iconLeft"></slot>
       </span>
-      <input class="form-control timepicker"
+      <input ref="timepicker" class="form-control"
         v-bind="$attrs"
         v-on:input="$emit('input', $event.target.value)"
         v-bind:value="value"
@@ -48,8 +48,8 @@ export default {
   },
   mounted() {
     this.value = this.value==="" ? '0:00' :this.value;
-    const obj = {...this.opt, ...this.option};
-    const picker = $(this.$el).find('.timepicker');
+    const obj = { ...this.opt, ...this.option };
+    const picker = $(this.$refs.timepicker);
     picker.timepicker(obj).on('changeTime.timepicker', e => {
       this.$emit('input', e.time.value);
     });

@@ -3,10 +3,10 @@
     <input
       class="js-switch"
       type="checkbox"
+      ref="switch"
       v-bind="$attrs"
       v-on:change="toggleSwitch"
       v-bind:checked="checked"
-      v-bind:id="setSwitchId"
     >
     <span class="m-l-10">{{checktitle}}</span>
   </div>
@@ -23,7 +23,6 @@ export default {
   },
   props: {
     checked:Boolean,
-    id:String,
     size:String,
     on:String,
     off:String
@@ -53,13 +52,10 @@ export default {
   computed: {
     checktitle:function(){
       return this.isChecked ? this.onText : this.offText;
-    },
-    setSwitchId:function(){
-      return 'sw'+this.id
     }
   },
   mounted:function(){
-    this.cbox = document.querySelector('#sw'+this.id);
+    this.cbox = this.$refs.switch;
     this.sw = new Switchery(this.cbox, this.switchStyle);
   },
   methods: {

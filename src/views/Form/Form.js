@@ -17,6 +17,7 @@ export default {
         firstName:'Chen',
         lastName:'Erikson',
         ps:'',
+        del:'input with button',
         city:'台中',
         switch1:false,
         switch2:true,
@@ -46,19 +47,25 @@ export default {
     'user.rangeDouble':function(val){
       console.log(val)
     },
-    'user.switch2':function (val) {
-      console.log('user switch2', val);
-    },
-    'user.start_time':function(val){
-      console.log('start time', val)
-    },
+    // 'user.switch2':function (val) {
+    //   console.log('user switch2', val);
+    // },
+    // 'user.start_time':function(val){
+    //   console.log('start time', val)
+    // },
   },
   mounted () {
     this.axios.get(this.url).then((response) => {
       console.log(response.data)
     })
+    $('.card-body [data-toggle="tooltip"]').tooltip({
+      trigger : 'hover'
+    })
   },
   methods: {
+    delBtn: function () {
+      this.user.del='';
+    },
     dateFormat (classes, date) {
       if (!classes.disabled) {
         classes.disabled = date.getTime() < new Date()
@@ -69,7 +76,7 @@ export default {
       console.log(this.user)
     },
     updateValues:function(val){
-      console.log(val);
+      console.log(val)
     },
     checkOpen:function(){
       console.log('check open')
