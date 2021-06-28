@@ -7,6 +7,7 @@
             <div class="logo">
               <img src="/assets/images/logo-text.png" alt="logo-img" />
               <h3 class="text-muted">帳號登入</h3>
+              <!-- <h4 class="text-danger" v-if="isEmp">請輸入id</h4> -->
             </div>
           </h3>
 
@@ -17,7 +18,7 @@
             method="post"
           >
             <div class="col-12">
-              <p class="text-muted" v-if="isDev">測試帳密：erikson / admin</p>
+              <p class="text-muted" v-if="isDev">測試帳密：{{user.id}} / {{user.password}}</p>
             </div>
             <div class="col-12">
               <div class="form-group">
@@ -26,7 +27,7 @@
                   :class="{ 'is-invalid': errorId }"
                   type="text"
                   required
-                  v-model="id"
+                  v-model.trim="id"
                   placeholder="請輸入帳號"
                   aria-describedby="validationUserId"
                 />
@@ -43,7 +44,7 @@
                   :class="{ 'is-invalid': errorPassword }"
                   type="password"
                   required
-                  v-model="password"
+                  v-model.trim="password"
                   aria-describedby="validationUserPassword"
                 />
                 <div id="validationUserPassword" class="invalid-feedback">
@@ -52,9 +53,9 @@
               </div>
             </div>
 
-            <div class="col-12">
+            <!-- <div class="col-12">
               <sp-checkbox id="checkbox-signup" class="checkbox-primary" label="Remember me" v-model="rememberMe"></sp-checkbox>
-            </div>
+            </div> -->
 
             <div class="col-12">
               <div class="form-group text-center mt-4">
@@ -83,13 +84,14 @@
 <script>
 import dayjs from "dayjs";
 import { mapActions, mapState } from "vuex";
+import isEmpty from "lodash/isEmpty";
 
 export default {
   name: "Login",
   components: {},
   data() {
     return {
-      isDev: "",
+      isDev: process.env.NODE_ENV === "development" ? true : false,
       id: "",
       password: "",
       errorPassword: false,
@@ -103,11 +105,13 @@ export default {
   },
   computed: {
     // ...mapState(["cookieTime"]),
+    isEmp:function(){
+      return isEmpty(this.id);
+    }
   },
   watch: {},
   mounted() {
     $cookies.remove("user_token");
-    this.isDev = process.env.NODE_ENV === "development" ? true : false;
   },
   methods: {
     ...mapActions(["setToken"]),

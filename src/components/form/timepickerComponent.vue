@@ -13,6 +13,9 @@
       <span v-if="$slots.iconRight" class="input-group-addon">
         <slot name="iconRight"></slot>
       </span>
+      <span v-if="$slots.iconBtn" class="input-group-btn">
+        <slot name="iconBtn"></slot>
+      </span>
     </div>
   </div>
 </template>
@@ -24,14 +27,13 @@ export default {
   name: 'TimepickerComponent',
   props: {
     label:String,
-    iconRight:Boolean,
-    iconLeft:Boolean,
     value:String,
     option:Object,
     horizontal:Boolean
   },
   data(){
     return {
+      picker:null,
       opt:{
         showMeridian: false,
         minuteStep:5
@@ -46,11 +48,16 @@ export default {
       return this.horizontal ? 'col' : '';
     }
   },
+  watch:{
+    value:function(val){
+      this.picker.timepicker('setTime', val);
+    }
+  },
   mounted() {
     this.value = this.value==="" ? '0:00' :this.value;
     const obj = { ...this.opt, ...this.option };
-    const picker = $(this.$refs.timepicker);
-    picker.timepicker(obj).on('changeTime.timepicker', e => {
+    this.picker = $(this.$refs.timepicker);
+    this.picker.timepicker(obj).on('changeTime.timepicker', e => {
       this.$emit('input', e.time.value);
     });
   },
@@ -63,7 +70,7 @@ export default {
     color: $muted;
   }
   .label-width{
-    width: 85px;
+    width: 100px;
     margin-bottom: 0;
   }
   .col{

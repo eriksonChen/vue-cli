@@ -53,8 +53,8 @@ Vue.component('sp-switch', SwitchComponent)
 Vue.component('sp-checkbox', CheckboxComponent)
 Vue.component('sp-timepicker', TimepickerComponent)
 Vue.component('sp-textarea', TextareaComponent)
-// Vue.component('date-range-picker', DateRangePicker)
 Vue.component('sp-rangeslider', RangesliderComponent)
+// Vue.component('date-range-picker', DateRangePicker)
 
 Vue.config.productionTip = false
 Vue.use(VueSweetalert2)

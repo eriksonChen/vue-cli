@@ -14,8 +14,9 @@ export default {
       subject: new Subject(),
       url:'./assets/apis/data.json',
       user:{
-        firstName:'Chen',
-        lastName:'Erikson',
+        name:'Erikson',
+        cell:'',
+        email:'',
         ps:'',
         del:'input with button',
         city:'台中',
@@ -47,12 +48,6 @@ export default {
     'user.rangeDouble':function(val){
       console.log(val)
     },
-    // 'user.switch2':function (val) {
-    //   console.log('user switch2', val);
-    // },
-    // 'user.start_time':function(val){
-    //   console.log('start time', val)
-    // },
   },
   mounted () {
     this.axios.get(this.url).then((response) => {

@@ -1,18 +1,23 @@
 <template>
   <div class="form-group" v-bind:class="{'d-flex align-items-center': horizontal}">
     <label v-if="label" v-bind:class="labelClass">{{label}}</label>
-    <select ref="selectpicker" class="form-control selectpicker" 
-      v-bind:class="inputClass"
-      v-bind:title="$attrs.placeholder"
-      v-bind="$attrs"
-      v-model="val" 
-      :erer="val">
-      <option 
-        v-bind:value="item.value ? item.value : item" 
-        v-for="(item, i) in options" :key="i">
-        {{item.text ?  item.text : item}}
-      </option>
-    </select>
+    <div class="input-group">
+      <select ref="selectpicker" class="form-control" 
+        v-bind:class="inputClass"
+        v-bind:title="$attrs.placeholder"
+        v-bind="$attrs"
+        v-model="val" 
+        :erer="val">
+        <option 
+          v-bind:value="item.value ? item.value : item" 
+          v-for="(item, i) in options" :key="i">
+          {{item.text ?  item.text : item}}
+        </option>
+      </select>
+      <span v-if="$slots.iconBtn" class="input-group-btn">
+        <slot name="iconBtn"></slot>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -70,7 +75,10 @@ export default {
     color: $muted;
   }
   .label-width{
-    width: 85px;
+    width: 100px;
     margin-bottom: 0;
+  }
+  .input-group{
+    flex: 1;
   }
 </style>

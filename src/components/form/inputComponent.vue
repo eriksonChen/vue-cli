@@ -1,12 +1,12 @@
 <template>
-  <div class="form-group" v-bind:class="{'d-flex align-items-center': horizontal}">
-    <label v-if="label" v-bind:class="labelClass">{{label}}</label>
-    <div v-if="stat" 
-      class="form-control-static font-weight-bold"
-      v-bind:class="inputClass" 
+  <div class="form-group" :class="{'d-flex align-items-center': horizontal}">
+    <label v-if="label" :class="labelClass">{{label}}</label>
+    <div v-if="isStatic" 
+      class="form-control-static font-weight-bold text-white"
+      :class="inputClass" 
       v-html="value">
     </div>
-    <div v-if="!stat" v-bind:class="inputClass">
+    <div v-if="!isStatic" :class="inputClass">
       <div class="input-group">
         <span v-if="$slots.iconLeft" class="input-group-addon">
           <slot name="iconLeft"></slot>
@@ -14,7 +14,7 @@
         <input class="form-control"
           v-bind="$attrs"
           v-on:input="$emit('input', $event.target.value)"
-          v-bind:value="value"
+          :value="value"
         >
         <span v-if="$slots.iconRight" class="input-group-addon">
           <slot name="iconRight"></slot>
@@ -33,7 +33,6 @@ export default {
   inheritAttrs: false,
   name: 'InputComponent',
   props: {
-    title:String,
     label:String,
     value:String,
     static:Boolean,
@@ -42,7 +41,7 @@ export default {
   },
   data(){
     return {
-      stat:this.static
+      isStatic:this.static
     }
   },
   computed: {
@@ -53,6 +52,7 @@ export default {
       return this.horizontal ? 'col' : '';
     }
   },
+  mounted(){}
 }
 </script>
 
@@ -61,7 +61,7 @@ export default {
     color: $muted;
   }
   .label-width{
-    width: 85px;
+    width: 100px;
     margin-bottom: 0;
   }
   .col{

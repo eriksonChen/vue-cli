@@ -41,7 +41,7 @@
     color: $muted;
   }
   .label-width{
-    width: 85px;
+    width: 100px;
     margin-bottom: 0;
   }
   .col{

@@ -12,39 +12,83 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-6">
-                <sp-input label="First Name" v-model="user.firstName" required></sp-input>
+                <sp-input label="static input" value="台北" static></sp-input>
               </div>
+
               <div class="col-sm-6">
-                <sp-input label="Last Name" v-model="user.lastName" required></sp-input>
-              </div>
-              <div class="col-sm-6">
-                <sp-input label="password" type="password" v-model="user.ps" required>
-                  <template v-slot:iconLeft>
-                    <i class="fas fa-lock"></i>
+                <sp-input label="input with button" 
+                  placeholder="input your name"
+                  v-model="user.name" 
+                  required>
+                  <template slot="iconBtn">
+                    <button class="btn btn-danger" @click="user.name=''">
+                      <i class="mdi mdi-close"></i>
+                    </button>
                   </template>
                 </sp-input>
               </div>
               <div class="col-sm-6">
-                <sp-select label="City" v-model="user.city" :options='citySelect' placeholder="居住城市"></sp-select>
+                <sp-input label="input with left icon" type="email" v-model="user.email" placeholder="email" required>
+                  <template slot="iconLeft"><i class="fas fa-envelope"></i></template>
+                </sp-input>
               </div>
               <div class="col-sm-6">
-                <sp-datepicker label='開始日期' placeholder="Start time" v-model="user.start">
+                <sp-input label="input with right icon" v-model="user.cell" placeholder="請輸入電話">
+                  <template slot="iconRight"><i class="fas fa-phone"></i></template>
+                </sp-input>
+              </div>
+              <div class="col-sm-6">
+                <sp-input label="input witch error message" 
+                  note="請填寫您的姓名" 
+                  class="has-error"
+                  v-model="user.name" 
+                  placeholder="請輸入姓名">
+                </sp-input>
+              </div>
+              <div class="col-sm-6">
+                <sp-select label="City" v-model="user.city" :options='citySelect' placeholder="居住城市">
+                  <template v-slot:iconBtn>
+                    <button 
+                      type="button" 
+                      class="btn btn-danger"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="清除"
+                      @click="user.city=''"
+                    >
+                      <i class="mdi mdi-close"></i>
+                    </button>
+                  </template>
+                </sp-select>
+              </div>
+
+              <div class="col-sm-6">
+                <sp-datepicker label='datapicker with icon' placeholder="Start time" v-model="user.start">
                   <template v-slot:iconLeft> <i class="fas fa-calendar"></i> </template>
                 </sp-datepicker>
               </div>
               <div class="col-sm-6">
-                <sp-datepicker label='結束日期' placeholder="End time" v-model="user.end">
-                  <template v-slot:iconLeft> <i class="fas fa-calendar"></i> </template>
+                <sp-datepicker label='datepicker with button' placeholder="End time" v-model="user.end">
+                  <template v-slot:iconBtn>
+                    <button type="button" class="btn btn-danger" @click="user.end=''">
+                      清除
+                    </button>
+                  </template>
                 </sp-datepicker>
               </div>
+              <!-- timepicker component -->
               <div class="col-sm-6">
-                <sp-timepicker label="開始時間" placeholder="Start time" v-model="user.start_time">
+                <sp-timepicker label="timepicker with icon" placeholder="Start time" v-model="user.start_time">
                   <template v-slot:iconLeft> <i class="fas fa-clock"></i> </template>
                 </sp-timepicker>
               </div>
               <div class="col-sm-6">
-                <sp-timepicker label="結束時間" placeholder="End time" v-model="user.end_time">
-                  <template v-slot:iconLeft> <i class="fas fa-clock"></i> </template>
+                <sp-timepicker label="timepicker with button" placeholder="End time" v-model="user.end_time">
+                  <template v-slot:iconBtn>
+                    <button type="button" class="btn btn-danger" @click="user.end_time=''">
+                      <i class="mdi mdi-close"></i>
+                    </button>
+                  </template>
                 </sp-timepicker>
               </div>
 
@@ -96,6 +140,10 @@
             </div>
             <div class="card-body">
               <div class="row">
+                
+                <div class="col-sm-12">
+                  <sp-input label="City：" value="台中" horizontal static></sp-input>
+                </div>
                 <div class="col-sm-12">
                   <sp-input label="First Name" v-model="user.firstName" horizontal required></sp-input>
                 </div>
@@ -124,10 +172,22 @@
                   </sp-input>
                 </div>
                 <div class="col-sm-12">
-                  <sp-select label="City" v-model="user.city" :options='citySelect' horizontal placeholder="居住城市"></sp-select>
+                  <sp-select label="City" v-model="user.city" :options='citySelect' horizontal placeholder="居住城市">
+                    <template v-slot:iconBtn>
+                      <button 
+                        type="button" 
+                        class="btn btn-danger"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="清除"
+                        @click="user.city=''"
+                      >刪除
+                      </button>
+                    </template>
+                  </sp-select>
                 </div>
                 <div class="col-sm-12">
-                  <sp-datepicker label='開始日期' placeholder="Start time" horizontal v-model="user.start">
+                  <sp-datepicker label='開始日期' placeholder="Start time" horizontal v-model="user.start" format="yyyy:mm:dd">
                     <template v-slot:iconRight> <i class="fas fa-calendar"></i> </template>
                   </sp-datepicker>
                 </div>
