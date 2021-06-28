@@ -46,7 +46,7 @@
                 </sp-input>
               </div>
               <div class="col-sm-6">
-                <sp-select label="City" v-model="user.city" :options='citySelect' placeholder="居住城市">
+                <sp-select label="City" v-model="user.city" :options='citySelect' placeholder="居住城市" :all="all">
                   <template v-slot:iconBtn>
                     <button 
                       type="button" 
@@ -104,7 +104,7 @@
               <div class="col-sm-12 form-group">
                 <p>switch</p>
                 <div class="d-flex form-group">
-                  <sp-switch v-model="user.switch1" id="sw1"></sp-switch>
+                  <sp-switch on="開啟" off="關閉" v-model="user.switch1" id="sw1"></sp-switch>
                   <sp-switch v-model="user.switch2" id="sw2"></sp-switch>
                   <sp-switch v-model="user.switch3" id="sw3"></sp-switch>
                   <sp-switch v-model="user.switch4" id="sw4"></sp-switch>

@@ -13,6 +13,9 @@ export default {
       dateRange: {startDate, endDate},
       subject: new Subject(),
       url:'./assets/apis/data.json',
+      all:{
+        value:"11", text:"所有都市  "
+      },
       user:{
         name:'Erikson',
         cell:'',

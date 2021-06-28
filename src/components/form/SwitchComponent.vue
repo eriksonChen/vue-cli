@@ -1,5 +1,5 @@
 <template>
-  <div style="width:120px; margin:0 auto; padding-left:10px" class="text-left">
+  <div class="text-left switch-cont">
     <input
       class="js-switch"
       type="checkbox"
@@ -20,6 +20,7 @@ export default {
   name: 'SwitchComponent',
   model: {
     prop: 'checked',
+    event: 'change'
   },
   props: {
     checked:Boolean,
@@ -31,7 +32,7 @@ export default {
     return {
       subject: new Subject(),
       closeSubject: new Subject(),
-      sw:null,
+      switchery:null,
       cbox:null,
       intervalObs:null,
       isChecked:this.checked,
@@ -56,7 +57,7 @@ export default {
   },
   mounted:function(){
     this.cbox = this.$refs.switch;
-    this.sw = new Switchery(this.cbox, this.switchStyle);
+    this.switchery = new Switchery(this.cbox, this.switchStyle);
   },
   methods: {
     toggleSwitch:function(e){
@@ -67,13 +68,18 @@ export default {
   beforeDestroy: function() {
     this.subject.next();
     this.subject.complete();
-    this.sw.destroy();
+    this.switchery.destroy();
   }
 }
 </script>
 
 <style scoped lang="scss">
-  @import "../../assets/plugins/switchery/switchery.css";
+  // @import "../../assets/plugins/switchery/switchery.css";
+  .switch-cont{
+    width:120px; 
+    margin:0 auto; 
+    padding-left:10px;
+  }
   ::v-deep {
     .switchery>small {
       display: flex;

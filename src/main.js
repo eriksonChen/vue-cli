@@ -20,6 +20,7 @@ import '@/assets/plugins/datatables/dataTables.bootstrap4.min.js'
 import '@/assets/plugins/datatables/dataTables.buttons.min.js'
 import '@/assets/plugins/ion.rangeSlider-master/js/ion.rangeSlider.min.js'
 import "@/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
+import '@/assets/js/vendor/bootstrap-select.min.js'
 
 // 引入全局 scss
 import 'bootstrap/scss/bootstrap.scss'
@@ -32,7 +33,9 @@ import "@/assets/plugins/datatables/dataTables.bootstrap4.min.css"
 import "@/assets/plugins/datatables/scroller.bootstrap.min.css"
 import '@/assets/plugins/ion.rangeSlider-master/css/ion.rangeSlider.css'
 import "@/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css"
+import "@/assets/plugins/bootstrap-select/bootstrap-select.min.css"
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css'
+import '@/assets/plugins/switchery/switchery.css'
 import '@/assets/scss/style.scss'
 
 // gobal components
