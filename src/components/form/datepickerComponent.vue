@@ -3,7 +3,7 @@
     class="form-group"
     v-bind:class="{ 'd-flex align-items-center': horizontal }"
   >
-    <label v-if="label" v-bind:class="labelClass">{{ label }}</label>
+    <label v-if="label" :class="[labelClass, {'required': $attrs.required !== undefined}]">{{ label }}</label>
     <div class="input-group" v-bind:class="inputClass">
       <span v-if="$slots.iconLeft" class="input-group-addon">
         <slot name="iconLeft"></slot>

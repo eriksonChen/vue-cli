@@ -1,6 +1,6 @@
 <template>
-  <div class="form-group" v-bind:class="{'d-flex align-items-center': horizontal}">
-    <label v-if="label" v-bind:class="labelClass">{{label}}</label>
+  <div class="form-group" v-bind:class="{'d-flex align-items-center': horizontal, 'has-error': error}">
+    <label v-if="label" :class="[labelClass, {'required': $attrs.required !== undefined}]">{{label}}</label>
     <div class="input-group">
       <select ref="selectpicker" class="form-control" 
         v-bind:class="inputClass"
@@ -29,10 +29,11 @@ export default {
   name: 'SelectComponent',
   props: {
     label:String,
-    options:Array,
-    value:String,
-    horizontal:Boolean,
-    all:Object,
+    options:Array, // 選項 ['item 1', 'item2'] or [{ value:1, text:item1 }, ...]
+    value:String, 
+    horizontal:Boolean, //直式(預設) or 橫式
+    all: Object,
+    error: Boolean, // 是否有錯誤
   },
   data(){
     return {
@@ -63,7 +64,6 @@ export default {
     $(this.$refs.selectpicker).selectpicker('refresh');
   },
   mounted(){
-    console.log(this.all)
     $(this.$refs.selectpicker).selectpicker();
     this.val = this.value;
   },
@@ -71,7 +71,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  // @import "../../assets/plugins/bootstrap-select/bootstrap-select.min.css";
   label{
     color: $muted;
   }

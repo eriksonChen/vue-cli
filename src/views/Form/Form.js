@@ -10,6 +10,7 @@ export default {
     let endDate = new Date();
     endDate.setDate(endDate.getDate() + 2)
     return {
+      test:'erikson',
       dateRange: {startDate, endDate},
       subject: new Subject(),
       url:'./assets/apis/data.json',

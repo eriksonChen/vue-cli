@@ -12,11 +12,16 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-6">
+                <sp-input type="email" label="My name" v-model="test" required></sp-input>
+              </div>
+
+              <div class="col-sm-6">
                 <sp-input label="static input" value="台北" static></sp-input>
               </div>
 
               <div class="col-sm-6">
-                <sp-input label="input with button" 
+                <sp-input 
+                  label="input with button" 
                   placeholder="input your name"
                   v-model="user.name" 
                   required>
@@ -39,14 +44,14 @@
               </div>
               <div class="col-sm-6">
                 <sp-input label="input witch error message" 
-                  note="請填寫您的姓名" 
-                  class="has-error"
+                  note="請填寫您的姓名"
                   v-model="user.name" 
+                  error
                   placeholder="請輸入姓名">
                 </sp-input>
               </div>
               <div class="col-sm-6">
-                <sp-select label="City" v-model="user.city" :options='citySelect' placeholder="居住城市" :all="all">
+                <sp-select label="City" v-model="user.city" :options='citySelect' placeholder="居住城市" :all="all" required>
                   <template v-slot:iconBtn>
                     <button 
                       type="button" 
@@ -102,9 +107,9 @@
 
               <!-- switch -->
               <div class="col-sm-12 form-group">
-                <p>switch</p>
+                <p>switch test</p>
                 <div class="d-flex form-group">
-                  <sp-switch on="開啟" off="關閉" v-model="user.switch1" id="sw1"></sp-switch>
+                  <sp-switch on="er" off="test" v-model="user.switch1" id="sw1"></sp-switch>
                   <sp-switch v-model="user.switch2" id="sw2"></sp-switch>
                   <sp-switch v-model="user.switch3" id="sw3"></sp-switch>
                   <sp-switch v-model="user.switch4" id="sw4"></sp-switch>
@@ -125,7 +130,7 @@
 
               <!-- textarea -->
               <div class="col-sm-12">
-                <sp-textarea label="Textarea" v-model="user.text" rows="4" placeholder="請輸入文字"></sp-textarea>
+                <sp-textarea label="Textarea" v-model="user.text" rows="4" placeholder="請輸入文字" required></sp-textarea>
               </div>
               
             </div>
@@ -145,7 +150,7 @@
                   <sp-input label="City：" value="台中" horizontal static></sp-input>
                 </div>
                 <div class="col-sm-12">
-                  <sp-input label="First Name" v-model="user.firstName" horizontal required></sp-input>
+                  <sp-input type="email" label="First Name" v-model="user.firstName" horizontal required></sp-input>
                 </div>
                 <div class="col-sm-12">
                   <sp-input label="Last" v-model="user.lastName" horizontal required></sp-input>

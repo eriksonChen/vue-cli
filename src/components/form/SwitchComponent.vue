@@ -39,7 +39,7 @@ export default {
       onText: this.on || 'ON',
       offText: this.off || 'OFF' ,
       switchStyle :{
-        color             : '#00a4fe',
+        color             : '#990000',
         secondaryColor    : '#ccc',
         jackColor         : '#fff',
         className         : 'switchery',

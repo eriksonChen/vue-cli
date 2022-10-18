@@ -1,4 +1,3 @@
-
 .mw200 {
   max-width: 200px;
 }
@@ -26,6 +25,12 @@
   .h-100-20{
     height: calc(100% - 20px);
   }
+  .modal-title{
+    color: inherit;
+  }
+  .close{
+    color: white;
+  }
 }
 
 .bg-darkgreen {
@@ -44,6 +49,7 @@
 
 /* navbar */
 nav.navbar {
+  background-color: $topbarBg;
   .button-menu-mobile {
     background: inherit;
     height: auto;
@@ -58,6 +64,49 @@ nav.navbar {
         cursor: pointer;
       }
     }
+  }
+}
+
+//button
+.btn-outline-info{
+  color: $info;
+  border-color: $info;
+  &:hover, &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, &.dropdown-toggle{
+    background-color: $info;
+    border-color: $info;
+  }
+}
+.btn-outline-success{
+  color: $success;
+  border-color: $success;
+  &:hover, &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, &.dropdown-toggle{
+    background-color: $success;
+    border-color: $success;
+  }
+}
+.btn-outline-warning{
+  color: $warning;
+  border-color: $warning;
+  &:hover, &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, &.dropdown-toggle{
+    background-color: $warning;
+    border-color: $warning;
+    color: white;
+  }
+}
+.btn-outline-danger{
+  color: $danger;
+  border-color: $danger;
+  &:hover, &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, &.dropdown-toggle{
+    background-color: $danger;
+    border-color: $danger;
+  }
+}
+.btn-outline-primary{
+  color: $primary;
+  border-color: $primary;
+  &:hover, &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, &.dropdown-toggle{
+    background-color: $primary;
+    border-color: $primary;
   }
 }
 
@@ -90,7 +139,6 @@ nav.navbar {
       }
     }
   }
-  
 }
 
 // stepper
@@ -105,8 +153,6 @@ nav.navbar {
 }
 
 /* button */
-.content:not(.sweet-alert),
-.content:not(.actions-btn),
 .modal {
   .btn-light {
     color: $muted;
@@ -169,12 +215,7 @@ nav.navbar {
       color: #dee2e6;
     }
   }
-  .btn-light:not(:disabled):not(.disabled).active,
-  .btn-light:not(:disabled):not(.disabled):active,
-  > .btn-light.dropdown-toggle {
-    background-color: #3b4654;
-    border-color: #4a5869;
-  }
+
   .bs-deselect-all,
   .bs-select-all {
     border: 1px solid #ccc;
@@ -305,6 +346,11 @@ nav.navbar {
     color: $danger;
   }
 }
+label.required::after{
+  content: "＊";
+  margin-left: 3px;
+  color: red;
+}
 
 /* datatable */
 
@@ -401,6 +447,12 @@ span.badge{
   border-top: 1px solid #4a5869;
 }
 
+
+//datepicker
+.datepicker>div{
+  display: block;
+}
+
 .content-page>.content{
   padding-left: 0;
   padding-right: 0;
@@ -415,17 +467,33 @@ span.badge{
   background-color: #666;
 }
 
-@media (max-width: 767px){
-  .modal-full{
-    max-width: inherit;
-    width: auto;
+// switch
+.switchery>small {
+  display: flex;
+}
+.switchery>small>i{
+  display: none;
+  margin: auto;
+  color:gray;
+  animation: pending 1s infinite linear;
+}
+.pending .switchery>small>i{
+  display: block;
+}
+@-webkit-keyframes pending {
+  from {
+    -webkit-transform: rotate(0deg);
   }
-  .card{
-    background-color: inherit;
-    margin-bottom: 0;
-    .card-body{
-      padding: 0;
-    }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes pending {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -448,4 +516,53 @@ span.badge{
     top: 3px;
     left: 6px;
   }
+}
+
+.irs--round{
+  pointer-events: none;
+  
+  .irs-line{
+    pointer-events: auto;
+  }
+  .irs-handle{
+    border: 1px solid $lightgray;
+    pointer-events: auto;
+  }
+  .irs-from, .irs-to, .irs-single{
+    border-radius: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.html-wrap{
+  height: 150px;
+}
+
+.json-wrap {
+  height: 200px;
+}
+
+.ace-tomorrow-night{
+  background-color: $inverse;
+}
+
+.card-box .card .card-header a[data-toggle=collapse].collapsed, .card-box .card .card-header a[data-toggle=collapse]{
+  &::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+}
+
+.show>{
+  .btn-light:not(:disabled):not(.disabled):active, .btn-light.dropdown-toggle{
+    color: inherit;
+    background-color: inherit;
+    border-color: #4a5869;
+  }
+}
+.btn-light.dropdown-toggle:not(:disabled):not(.disabled):active{
+  color: inherit;
+  background-color: inherit;
+  border-color: #4a5869;
 }

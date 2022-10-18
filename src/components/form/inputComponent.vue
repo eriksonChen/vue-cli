@@ -1,6 +1,6 @@
 <template>
-  <div class="form-group" :class="{'d-flex align-items-center': horizontal}">
-    <label v-if="label" :class="labelClass">{{label}}</label>
+  <div class="form-group" :class="{'d-flex align-items-center': horizontal, 'has-error': error}">
+    <label v-if="label" :class="[labelClass, {'required': $attrs.required !== undefined}]" >{{label}}</label>
     <div v-if="isStatic" 
       class="form-control-static font-weight-bold text-white"
       :class="inputClass" 
@@ -37,7 +37,8 @@ export default {
     value:String,
     static:Boolean,
     note:String,
-    horizontal:Boolean
+    horizontal: Boolean,
+    error: Boolean
   },
   data(){
     return {

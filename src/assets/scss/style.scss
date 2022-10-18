@@ -2,10 +2,10 @@
 Template Name: Appzia - Bootstrap 4 Admin Dashboard
 File: Main Css File
 */
-@import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/_core.scss";
-@import "@/assets/scss/_components.scss";
-@import "@/assets/scss/_pages.scss";
-@import "@/assets/scss/_menu.scss";
-@import "@/assets/scss/_responsive.scss";
-@import "@/assets/scss/_custom.scss";
+@import "variables";
+@import "core";
+@import "components";
+@import "pages";
+@import "menu";
+@import "responsive";
+@import "custom";

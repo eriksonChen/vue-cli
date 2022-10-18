@@ -1,7 +1,7 @@
 <template lang="html">
 
-  <div class="form-group" v-bind:class="{'d-flex': horizontal}">
-    <label v-if="label" v-bind:class="labelClass">{{label}}</label>
+  <div class="form-group" v-bind:class="{'d-flex': horizontal, 'has-error': error}">
+    <label v-if="label" :class="[labelClass, {'required': $attrs.required !== undefined}]">{{label}}</label>
     <div v-bind:class="inputClass">
       <textarea class="form-control" 
         v-bind="$attrs" 
@@ -19,7 +19,8 @@
     props: {
       label:String,
       value:String,
-      horizontal:Boolean
+      horizontal: Boolean,
+      error: Boolean,
     },
     data() {
       return {
